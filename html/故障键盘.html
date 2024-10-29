@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        /**
+         * @param {string} s
+         * @return {string}
+         */
+        var finalString = function (s) {
+            let res = [];
+            for (let j of s) {
+                if (j != 'i') {
+                    res.push(j);
+                } else {
+                    res = res.reverse();
+                }
+            }
+            return res.join('');
+        };
+
+        console.log(finalString('string'));
+
+
+        //         作者：力扣官方题解
+        // 链接：https://leetcode.cn/problems/faulty-keyboard/solutions/2711922/gu-zhang-jian-pan-by-leetcode-solution-l9zg/
+        // 来源：力扣（LeetCode）
+        // 著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+
+        // 加了个标志直接往前或后加入数据 reverse最多只用调用一次
+        var finalString = function (s) {
+            let q = [];
+            let head = false;
+            for (let ch of s) {
+                if (ch !== 'i') {
+                    if (head) {
+                        q.unshift(ch);
+                    } else {
+                        q.push(ch);
+                    }
+                } else {
+                    head = !head;
+                }
+            }
+            let ans = head ? q.reverse().join('') : q.join('');
+            return ans;
+        };
+
+
+    </script>
+</body>
+
+</html>
