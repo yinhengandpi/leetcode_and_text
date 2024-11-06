@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        //后进先出
+        // function Stack() {
+        //     this.dataStore = [];
+        //     this.top = 0;
+        //     this.push = push;
+        //     this.pop = pop;
+        //     this.peek = peek;
+        //     this.clear = clear;
+        //     this.length = length;
+        // }
+
+        // function push(element) {
+        //     this.dataStore[this.top++] = element;
+        // }
+
+        // function pop() {
+        //     return this.dataStore[--this.top];
+        // }
+
+        // function peek() {
+        //     return this.dataStore[this.top - 1];
+        // }
+
+        // function length() {
+        //     return this.top;
+        // }
+
+        // function clear() {
+        //     this.top = 0;
+        // }
+
+
+        // // const stackNew = new Stack();
+        // // stackNew.push(22);
+        // // console.log(stackNew.dataStore);
+
+        const str = '2.3+23/12+(3.14159*0.24)';
+
+        function check90(params) {
+            let left = 0;
+            let right = 0;
+            str.split('').map((x) => {
+                if (x == '(') {
+                    if (right > 0) {
+                        right -= 1;
+                    } else {
+                        left++;
+                    }
+                }
+                if (x == ')') {
+                    if (left > 0) {
+                        left -= 1;
+                    } else {
+                        right++;
+                    }
+                }
+            })
+            return left == 0 && right == 0;
+        }
+
+        console.log(check90(str));
+    </script>
+</body>
+
+</html>
