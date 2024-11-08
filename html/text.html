@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 150px;
+            height: 150px;
+            border: 1px solid red;
+            background-image: url(../l4pb2lkn_w300_h3900.png);
+            background-position-y: 0;
+            background-size: 100%;
+        }
+
+        .box:hover {
+            animation: move 1.2s steps(12) infinite;
+            cursor: pointer;
+        }
+
+        @keyframes move {
+            0% {
+                background-position-y: 0;
+            }
+
+            100% {
+                background-position-y: -1800px;
+            }
+        }
+
+        .svg {
+            display: inline-block;
+            height: 85px;
+            width: 90px;
+            transition: all 0.8s ease-out 0s;
+        }
+
+        .st0 {
+            fill: none;
+            stroke: #333333;
+            stroke-width: 3;
+            stroke-miterlimit: 10;
+        }
+
+        .st1 {
+            fill: none;
+            stroke: #333333;
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-miterlimit: 10;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 帧动画 -->
+    <div class="box">1</div>
+    <!-- svg动画 -->
+    <div class="svg">
+        <svg version="1.1" id="svg2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+            x="0px" y="0px" viewBox="0 0 90 85" xml:space="preserve">
+            <g>
+                <path class="st0"
+                    d="M23.87,81.36V56.69c0-0.11-0.05-0.21-0.14-0.28l-7.64-5.72c-0.11-0.08-0.25-0.09-0.37-0.03L3.18,57.42
+                    C3.07,57.48,3,57.6,3,57.73v23.29c0,0.19,0.15,0.34,0.34,0.34h83.54c0.19,0,0.34-0.15,0.34-0.34V54.99c0-0.12-0.06-0.23-0.17-0.3
+                    l-10.05-6.01c-0.1-0.06-0.17-0.17-0.17-0.3V36c0-0.11-0.05-0.21-0.14-0.28L60.97,24.18c-0.12-0.08-0.27-0.09-0.39-0.01L41.64,36.61
+                    c-0.23,0.15-0.53-0.01-0.53-0.29l0.15-31.14c0-0.3-0.36-0.46-0.58-0.25l-16.7,16.22c-0.07,0.06-0.1,0.15-0.1,0.25v38.11"
+                    style="stroke-dasharray: 346, 348; stroke-dashoffset: 0;"></path>
+                <path class="st0" d="M41.26,5.18l12.72,10.11c0.08,0.07,0.12,0.16,0.12,0.26v65.81"
+                    style="stroke-dasharray: 83, 85; stroke-dashoffset: 0;"></path>
+                <path class="st1"
+                    d="M54.05,45.57L38.04,51.1c-0.14,0.05-0.23,0.18-0.23,0.33v5.05c0,0.23,0.22,0.39,0.44,0.33l15.8-4.49"
+                    style="stroke-dasharray: 40, 42; stroke-dashoffset: 0;"></path>
+                <path class="st1"
+                    d="M54.05,61.75L38.08,65.3c-0.16,0.03-0.27,0.17-0.27,0.34v5.71c0,0.21,0.19,0.37,0.4,0.34l15.84-2.57"
+                    style="stroke-dasharray: 40, 42; stroke-dashoffset: 0;"></path>
+            </g>
+        </svg>
+    </div>
+
+    <script>
+        const svg = document.querySelector('.svg');
+        svg.addEventListener('mouseover', () => {
+            const st0 = document.querySelectorAll('.svg .st0');
+            const st1 = document.querySelectorAll('.svg .st1');
+            Array.prototype.map.call(st0, (x) => {
+                if (x.style.strokeDashoffset > 0) return;
+                x.style.strokeDashoffset = 240;
+                const timer = setInterval(() => {
+                    if (Number(x.style.strokeDashoffset) <= 0) {
+                        clearInterval(timer);
+                    }
+                    x.style.strokeDashoffset -= 3;
+                }, 10);
+            })
+            Array.prototype.map.call(st1, (x) => {
+                if (x.style.strokeDashoffset > 0) return;
+                x.style.strokeDashoffset = 180;
+                const timer = setInterval(() => {
+                    if (Number(x.style.strokeDashoffset) <= 0) {
+                        clearInterval(timer);
+                    }
+                    x.style.strokeDashoffset -= 3;
+                }, 10);
+            })
+        });
+        console.log(svgDom);
+
+    </script>
+</body>
+
+</html>
